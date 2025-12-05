@@ -1,118 +1,153 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {
-  Zap,
-  Server,
-  Route as RouteIcon,
-  Shield,
-  Waves,
-  Sparkles,
-} from 'lucide-react'
+import { getTodos, addTodo, toggleTodo, deleteTodo } from '../functions/todo'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useState } from 'react'
+import { Trash2, CheckCircle, Circle, Plus, Loader2 } from 'lucide-react'
 
-export const Route = createFileRoute('/')({ component: App })
+export const Route = createFileRoute('/')({
+  component: TodoApp,
+  loader: async () => await getTodos(),
+})
 
-function App() {
-  const features = [
-    {
-      icon: <Zap className="w-12 h-12 text-cyan-400" />,
-      title: 'Powerful Server Functions',
-      description:
-        'Write server-side code that seamlessly integrates with your client components. Type-safe, secure, and simple.',
+function TodoApp() {
+  const queryClient = useQueryClient()
+  const [newTodo, setNewTodo] = useState('')
+
+  const { data: todos = [], isLoading } = useQuery({
+    queryKey: ['todos'],
+    queryFn: () => getTodos(),
+  })
+
+  const addMutation = useMutation({
+    mutationFn: addTodo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['todos'] })
+      setNewTodo('')
     },
-    {
-      icon: <Server className="w-12 h-12 text-cyan-400" />,
-      title: 'Flexible Server Side Rendering',
-      description:
-        'Full-document SSR, streaming, and progressive enhancement out of the box. Control exactly what renders where.',
+  })
+
+  const toggleMutation = useMutation({
+    mutationFn: toggleTodo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['todos'] })
     },
-    {
-      icon: <RouteIcon className="w-12 h-12 text-cyan-400" />,
-      title: 'API Routes',
-      description:
-        'Build type-safe API endpoints alongside your application. No separate backend needed.',
+  })
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteTodo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['todos'] })
     },
-    {
-      icon: <Shield className="w-12 h-12 text-cyan-400" />,
-      title: 'Strongly Typed Everything',
-      description:
-        'End-to-end type safety from server to client. Catch errors before they reach production.',
-    },
-    {
-      icon: <Waves className="w-12 h-12 text-cyan-400" />,
-      title: 'Full Streaming Support',
-      description:
-        'Stream data from server to client progressively. Perfect for AI applications and real-time updates.',
-    },
-    {
-      icon: <Sparkles className="w-12 h-12 text-cyan-400" />,
-      title: 'Next Generation Ready',
-      description:
-        'Built from the ground up for modern web applications. Deploy anywhere JavaScript runs.',
-    },
-  ]
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!newTodo.trim()) return
+    addMutation.mutate({ data: { title: newTodo } })
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
-      <section className="relative py-20 px-6 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10"></div>
-        <div className="relative max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-6 mb-6">
-            <img
-              src="/tanstack-circle-logo.png"
-              alt="TanStack Logo"
-              className="w-24 h-24 md:w-32 md:h-32"
-            />
-            <h1 className="text-6xl md:text-7xl font-black text-white [letter-spacing:-0.08em]">
-              <span className="text-gray-300">TANSTACK</span>{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                START
-              </span>
-            </h1>
-          </div>
-          <p className="text-2xl md:text-3xl text-gray-300 mb-4 font-light">
-            The framework for next generation AI applications
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-slate-900 rounded-xl shadow-2xl overflow-hidden border border-slate-800">
+        <div className="p-6 bg-slate-800/50 border-b border-slate-800">
+          <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+            Tasks
+          </h1>
+          <p className="text-slate-400 text-sm mt-1">
+            Manage your daily goals
           </p>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-            Full-stack framework powered by TanStack Router for React and Solid.
-            Build modern applications with server functions, streaming, and type
-            safety.
-          </p>
-          <div className="flex flex-col items-center gap-4">
-            <a
-              href="https://tanstack.com/start"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-cyan-500/50"
-            >
-              Documentation
-            </a>
-            <p className="text-gray-400 text-sm mt-2">
-              Begin your TanStack Start journey by editing{' '}
-              <code className="px-2 py-1 bg-slate-700 rounded text-cyan-400">
-                /src/routes/index.tsx
-              </code>
-            </p>
-          </div>
         </div>
-      </section>
 
-      <section className="py-16 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10"
+        <div className="p-6">
+          <form onSubmit={handleSubmit} className="relative mb-6">
+            <input
+              type="text"
+              value={newTodo}
+              onChange={(e) => setNewTodo(e.target.value)}
+              placeholder="Add a new task..."
+              className="w-full bg-slate-950 border border-slate-700 rounded-lg py-3 px-4 pr-12 text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all"
+              disabled={addMutation.isPending}
+            />
+            <button
+              type="submit"
+              disabled={addMutation.isPending || !newTodo.trim()}
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-cyan-500 hover:bg-cyan-400 text-white rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+              {addMutation.isPending ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Plus className="w-4 h-4" />
+              )}
+            </button>
+          </form>
+
+          <div className="space-y-3">
+            {isLoading ? (
+              <div className="flex justify-center py-8 text-slate-500">
+                <Loader2 className="w-6 h-6 animate-spin" />
+              </div>
+            ) : todos.length === 0 ? (
+              <div className="text-center py-8 text-slate-500">
+                <p>No tasks yet. Add one above!</p>
+              </div>
+            ) : (
+              todos.map((todo) => (
+                <div
+                  key={todo.id}
+                  className={`group flex items-center justify-between p-3 rounded-lg border transition-all ${
+                    todo.completed
+                      ? 'bg-slate-900/50 border-slate-800 opacity-60'
+                      : 'bg-slate-800/30 border-slate-700/50 hover:border-cyan-500/30'
+                  }`}
+                >
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
+                    <button
+                      onClick={() =>
+                        toggleMutation.mutate({
+                          data: { id: todo.id, completed: !todo.completed },
+                        })
+                      }
+                      disabled={toggleMutation.isPending}
+                      className={`flex-shrink-0 transition-colors ${
+                        todo.completed
+                          ? 'text-cyan-500'
+                          : 'text-slate-500 hover:text-cyan-400'
+                      }`}
+                    >
+                      {todo.completed ? (
+                        <CheckCircle className="w-5 h-5" />
+                      ) : (
+                        <Circle className="w-5 h-5" />
+                      )}
+                    </button>
+                    <span
+                      className={`truncate ${
+                        todo.completed ? 'line-through text-slate-500' : ''
+                      }`}
+                    >
+                      {todo.title}
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={() =>
+                      deleteMutation.mutate({ data: { id: todo.id } })
+                    }
+                    disabled={deleteMutation.isPending}
+                    className="ml-2 p-2 text-slate-500 hover:text-red-400 hover:bg-red-400/10 rounded-md transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                  >
+                    {deleteMutation.isPending ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Trash2 className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+              ))
+            )}
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   )
 }
