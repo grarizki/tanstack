@@ -3,8 +3,8 @@
 To run this application:
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 # Building For Production
@@ -12,7 +12,7 @@ npm run dev
 To build this application for production:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Testing
@@ -20,7 +20,7 @@ npm run build
 This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
 
 ```bash
-npm run test
+pnpm run test
 ```
 
 ## Styling
