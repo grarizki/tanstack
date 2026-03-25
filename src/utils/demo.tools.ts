@@ -1,4 +1,4 @@
-import { experimental_createMCPClient, tool } from 'ai'
+import { tool } from 'ai'
 //import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 import { z } from 'zod'
 

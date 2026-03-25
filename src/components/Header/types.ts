@@ -1,4 +1,3 @@
 // Type definitions for Header component
-export interface HeaderProps {
-  // Define your props here
-}
+// biome-ignore lint/suspicious/noEmptyInterface: Placeholder for future props
+export interface HeaderProps {}

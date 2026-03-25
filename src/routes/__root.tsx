@@ -1,12 +1,12 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
-import { QueryClientProvider } from '@tanstack/react-query'
+import { HeadContent, Scripts, Outlet, createRootRoute } from '@tanstack/react-router'
+import { useEffect } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import Header from '../components/Header'
-
-import StoreDevtools from '../lib/demo-store-devtools'
-import { queryClient } from '../lib/queryClient'
+import { ThemeProvider } from '../lib/theme.tsx'
+import Navbar from '../components/portfolio/Navbar'
+import Footer from '../components/portfolio/Footer'
+import ThreeDitherBackground from '../components/portfolio/ThreeDitherBackground'
 
 import appCss from '../styles.css?url'
 
@@ -21,7 +21,11 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Grarizki - Portfolio',
+      },
+      {
+        name: 'description',
+        content: 'Grarizki\'s portfolio showcasing web development skills using React, TypeScript, and modern frontend technologies.',
       },
     ],
     links: [
@@ -29,37 +33,78 @@ export const Route = createRootRoute({
         rel: 'stylesheet',
         href: appCss,
       },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin: 'anonymous',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@100..900&display=swap',
+      },
     ],
   }),
 
-  shellComponent: RootDocument,
+  component: RootComponent,
 })
 
-function RootDocument({ children }: { children: React.ReactNode }) {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <html lang="en">
-        <head>
-          <HeadContent />
-        </head>
-        <body>
-          <Header />
-          {children}
-          <TanStackDevtools
-            config={{
-              position: 'bottom-right',
-            }}
-            plugins={[
-              {
-                name: 'Tanstack Router',
-                render: <TanStackRouterDevtoolsPanel />,
+function RootComponent() {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger)
+      
+      // Initialize animations
+      const initAnimations = () => {
+        const elements = document.querySelectorAll('.animate-on-scroll')
+        elements.forEach((element) => {
+          gsap.fromTo(
+            element,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: element,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse',
               },
-              StoreDevtools,
-            ]}
-          />
-          <Scripts />
-        </body>
-      </html>
-    </QueryClientProvider>
+            }
+          )
+        })
+      }
+
+      initAnimations()
+    }
+  }, [])
+
+  return (
+    <ThemeProvider>
+      <RootDocument />
+    </ThemeProvider>
+  )
+}
+
+function RootDocument() {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body className="text-black dark:text-white bg-white dark:bg-black transition-colors duration-300">
+        <ThreeDitherBackground />
+        <Navbar />
+        <div className="min-h-screen">
+          <Outlet />
+        </div>
+        <Footer />
+        <Scripts />
+      </body>
+    </html>
   )
 }
