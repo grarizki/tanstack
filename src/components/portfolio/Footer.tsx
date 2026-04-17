@@ -4,20 +4,25 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="my-20">
+    <footer className="border-t border-white/5 py-10">
       <Container>
-        <p className="text-center text-sm text-slate-500">
-          . Copyright © {currentYear} .
-          <a
-            href="https://grarizki.com"
-            target="_blank"
-            rel="noopener"
-            className="hover:underline mx-1"
-          >
-            Grarizki
-          </a>
-          . All rights reserved .
-        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F7931A] to-[#FFD600] tracking-wider">
+            GRARIZKI
+          </span>
+          <p className="font-mono text-xs text-[#94A3B8] tracking-wider">
+            © {currentYear}{' '}
+            <a
+              href="https://grarizki.com"
+              target="_blank"
+              rel="noopener"
+              className="hover:text-[#F7931A] transition-colors duration-200"
+            >
+              grarizki.com
+            </a>
+            {' '}— All rights reserved.
+          </p>
+        </div>
       </Container>
     </footer>
   )

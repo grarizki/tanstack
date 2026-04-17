@@ -10,10 +10,10 @@ function AboutPage() {
   return (
     <Container>
       <Sectionhead>
-        <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-black dark:text-white">
+        <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-stone-800 dark:text-amber-50">
           About
         </h1>
-        <p className="text-lg mt-4 text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+        <p className="text-lg mt-4 text-stone-500 dark:text-amber-300 max-w-3xl mx-auto">
           👋 Hi there! I&apos;m a passionate frontend engineer and React developer
           based in Jakarta, Indonesia. With a strong background in software
           development, I&apos;m skilled in building seamless and dynamic web

@@ -48,23 +48,23 @@ function NotFoundPage() {
           </div>
 
           <div ref={contentRef} className="mt-4 space-y-4 max-w-lg">
-            <h1 className="text-2xl md:text-3xl font-bold text-black dark:text-white">
+            <h1 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-amber-50">
               Lost in the void
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 text-base">
+            <p className="text-stone-500 dark:text-amber-300 text-base">
               This page doesn&apos;t exist — or maybe it never did.
             </p>
             <div className="flex gap-4 justify-center pt-4">
               <Link
                 to="/"
-                className="px-6 py-2.5 rounded-full bg-black text-white dark:bg-white dark:text-black font-semibold hover:bg-emerald-600 dark:hover:bg-emerald-500 dark:hover:text-white transition-colors"
+                className="px-6 py-2.5 rounded-full bg-stone-800 text-amber-50 dark:bg-amber-50 dark:text-stone-900 font-semibold hover:bg-emerald-600 dark:hover:bg-emerald-500 dark:hover:text-white transition-colors"
               >
                 Go Home
               </Link>
               <button
                 type="button"
                 onClick={() => window.history.back()}
-                className="px-6 py-2.5 rounded-full border border-gray-300 dark:border-white/20 text-black dark:text-white font-semibold hover:border-emerald-500 hover:text-emerald-600 dark:hover:border-emerald-400 dark:hover:text-emerald-400 transition-colors"
+                className="px-6 py-2.5 rounded-full border border-stone-300 dark:border-white/20 text-stone-800 dark:text-amber-50 font-semibold hover:border-emerald-500 hover:text-emerald-600 dark:hover:border-emerald-400 dark:hover:text-emerald-400 transition-colors"
               >
                 Go Back
               </button>

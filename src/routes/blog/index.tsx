@@ -14,10 +14,10 @@ function BlogIndexPage() {
   return (
     <Container>
       <Sectionhead>
-        <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-black dark:text-white">
+        <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-stone-800 dark:text-amber-50">
           Our Blog
         </h1>
-        <p className="text-lg mt-4 text-slate-600 dark:text-slate-400">
+        <p className="text-lg mt-4 text-stone-500 dark:text-amber-300">
           We write about building startups and thoughts going on our mind.
         </p>
       </Sectionhead>
@@ -27,7 +27,7 @@ function BlogIndexPage() {
           {posts.map((post, index) => (
             <li key={post.slug}>
               <Link to="/blog/$slug" params={{ slug: post.slug }}>
-                <div className="flex flex-col h-full bg-white dark:bg-white/5 rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-white/10 hover:shadow-xl transition-shadow duration-300">
+                <div className="flex flex-col h-full bg-amber-50/80 dark:bg-white/5 rounded-2xl overflow-hidden shadow-lg border border-stone-300 dark:border-white/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="relative aspect-video overflow-hidden">
                     <img
                       src={post.image.src}
@@ -45,16 +45,16 @@ function BlogIndexPage() {
                       {post.title}
                     </h2>
 
-                    <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 flex-grow">
+                    <p className="text-stone-500 dark:text-amber-300 mb-4 line-clamp-3 flex-grow">
                       {post.snippet}
                     </p>
 
                     <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-100 dark:border-white/10">
-                      <span className="text-gray-400 text-sm">
+                      <span className="text-stone-400 text-sm">
                         {post.author}
                       </span>
                       <time
-                        className="text-gray-400 text-sm"
+                        className="text-stone-400 text-sm"
                         dateTime={post.publishDate}
                       >
                         {new Date(post.publishDate).toDateString()}

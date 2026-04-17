@@ -6,6 +6,45 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
+const works = [
+  {
+    title: 'Frontend Engineer',
+    company: 'PT. BFI Finance Indonesia',
+    period: 'Nov 2022 — Present',
+    location: 'BSD, Indonesia',
+    highlights: [
+      {
+        label: 'UI Redesign',
+        text: 'Redesigned company website\'s user interface to align with modern UX standards, improving navigation and interactivity. Led to a 20% increase in user engagement and 15% rise in conversion rates.',
+      },
+      {
+        label: 'Mobile-First',
+        text: 'Developed and implemented a fully responsive, mobile-first design, optimizing layouts and interactions for seamless mobile experience, increasing mobile traffic by 25%.',
+      },
+      {
+        label: 'Performance',
+        text: 'Collaborated with backend engineers to streamline website performance, optimizing assets, API calls, and caching strategies, leading to a 40% reduction in page loading time.',
+      },
+    ],
+  },
+  {
+    title: 'Frontend Developer',
+    company: 'PT. Nusa Data Hexamatika',
+    period: 'Dec 2021 — Nov 2022',
+    location: 'North Jakarta, Indonesia',
+    highlights: [
+      {
+        label: 'User-Centric Solutions',
+        text: 'Engaged with users and customers to gather feedback and identify pain points, then translated insights into actionable solutions. Improved user satisfaction and adoption rates.',
+      },
+      {
+        label: 'Quality & Performance',
+        text: 'Led efforts to maintain, optimize, and troubleshoot website functionality, collaborating with backend developers to resolve issues, enhance performance, and ensure brand consistency.',
+      },
+    ],
+  },
+]
+
 export default function WorkSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
 
@@ -13,7 +52,7 @@ export default function WorkSection() {
     if (!sectionRef.current) return
 
     const elements = sectionRef.current.querySelectorAll('.animate-on-scroll')
-    
+
     const ctx = gsap.context(() => {
       elements.forEach((element) => {
         gsap.fromTo(
@@ -38,88 +77,72 @@ export default function WorkSection() {
   }, [])
 
   return (
-    <section id="work" className="scroll-mt-24 relative z-10" ref={sectionRef}>
-      <div className="mt-16 md:mt-0">
-        <h2 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
-          Work Experience
+    <section id="work" className="scroll-mt-24 relative z-10 py-24" ref={sectionRef}>
+      {/* Section header */}
+      <div className="animate-on-scroll text-center mb-16">
+        <p className="font-mono text-xs text-[#F7931A] tracking-widest uppercase mb-3">
+          Experience
+        </p>
+        <h2 className="font-heading font-bold text-4xl md:text-5xl text-white">
+          Work History
         </h2>
       </div>
 
-      <div className="grid lg:grid-cols-1 md:grid-rows-2 gap-10 mx-auto max-w-screen-lg my-12">
-        <div className="animate-on-scroll bg-white/60 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 p-8 rounded-2xl shadow-xl hover:scale-[1.02] transition-all duration-300 hover:bg-white/80 dark:hover:bg-white/10 group">
-          <div className="flex justify-between items-start mb-4">
-            <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-800 dark:from-white dark:to-gray-400 group-hover:to-black dark:group-hover:to-white transition-all">
-              Frontend Engineer, PT. BFI Finance Indonesia
-            </h3>
-            <span className="text-blue-700 dark:text-blue-400 text-sm font-mono border border-blue-400/30 px-2 py-1 rounded">
-              Nov 2022 — Present
-            </span>
-          </div>
-          <p className="text-gray-900 dark:text-gray-400 mb-4 text-sm uppercase tracking-wider font-semibold">
-            BSD, Indonesia
-          </p>
-          <ul className="list-disc ml-5 text-black dark:text-gray-300 space-y-2">
-            <li>
-              <strong className="text-black dark:text-white">
-                UI Redesign:
-              </strong>{' '}
-              Redesigned company website&apos;s user interface to align with modern
-              UX standards, improving navigation and interactivity. This
-              initiative led to a 20% increase in user engagement and a 15%
-              rise in conversion rates.
-            </li>
-            <li>
-              <strong className="text-black dark:text-white">
-                Mobile-First:
-              </strong>{' '}
-              Developed and implemented a fully responsive, mobile-first
-              design, optimizing layouts and interactions for seamless mobile
-              experience, increasing mobile traffic surged by 25%.
-            </li>
-            <li>
-              <strong className="text-black dark:text-white">
-                Performance:
-              </strong>{' '}
-              Collaborated with backend engineers to streamline website
-              performance, optimizing assets, API calls, and caching
-              strategies. These improvements led to a 40% reduction in page
-              loading.
-            </li>
-          </ul>
-        </div>
+      {/* Timeline */}
+      <div className="relative max-w-screen-lg mx-auto">
+        {/* Vertical gradient line */}
+        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#F7931A] via-[#EA580C]/50 to-transparent hidden md:block" />
 
-        <div className="animate-on-scroll bg-white/60 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 p-8 rounded-2xl shadow-xl hover:scale-[1.02] transition-all duration-300 hover:bg-white/80 dark:hover:bg-white/10 group">
-          <div className="flex justify-between items-start mb-4">
-            <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-800 dark:from-white dark:to-gray-400 group-hover:to-black dark:group-hover:to-white transition-all">
-              Frontend Developer, PT. Nusa Data Hexamatika
-            </h3>
-            <span className="text-blue-700 dark:text-blue-400 text-sm font-mono border border-blue-400/30 px-2 py-1 rounded">
-              Dec 2021 — Nov 2022
-            </span>
-          </div>
-          <p className="text-gray-900 dark:text-gray-400 mb-4 text-sm uppercase tracking-wider font-semibold">
-            North Jakarta, Indonesia
-          </p>
-          <ul className="list-disc ml-5 text-black dark:text-gray-300 space-y-2">
-            <li>
-              <strong className="text-black dark:text-white">
-                User-Centric Solutions:
-              </strong>{' '}
-              Engaged with users and customers to gather feedback and identify
-              pain points, then translated insights into actionable solutions.
-              This initiative led to improved user satisfaction and adoption
-              rates.
-            </li>
-            <li>
-              <strong className="text-black dark:text-white">
-                Quality & Performance:
-              </strong>{' '}
-              Led efforts to maintain, optimize, and troubleshoot website
-              functionality, collaborating with backend developers to resolve
-              issues and enhance performance. Ensured high quality standards
-              and brand consistency.
-            </li>
-          </ul>
+        <div className="flex flex-col gap-12">
+          {works.map((work, idx) => (
+            <div
+              key={work.company}
+              className={`animate-on-scroll relative flex flex-col md:flex-row gap-8 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+            >
+              {/* Node on timeline */}
+              <div className="absolute left-0 md:left-1/2 -translate-x-1/2 top-8 w-4 h-4 rounded-full bg-[#F7931A] border-2 border-[#030304] shadow-[0_0_12px_rgba(247,147,26,0.8)] hidden md:block" />
+
+              {/* Spacer for other side */}
+              <div className="hidden md:block md:w-1/2" />
+
+              {/* Card */}
+              <div className="md:w-1/2 group">
+                <div className="relative bg-[#0F1115] border border-white/10 rounded-2xl p-8 hover:-translate-y-1 hover:border-[#F7931A]/40 hover:shadow-[0_0_30px_-10px_rgba(247,147,26,0.2)] transition-all duration-300">
+                  {/* Corner accents */}
+                  <span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-[#F7931A]/60" />
+                  <span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-[#F7931A]/60" />
+
+                  <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                    <div>
+                      <h3 className="font-heading font-semibold text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#F7931A] to-[#FFD600]">
+                        {work.title}
+                      </h3>
+                      <p className="font-body text-white/80 text-sm mt-1">{work.company}</p>
+                    </div>
+                    <span className="font-mono text-xs text-[#F7931A] border border-[#F7931A]/30 bg-[#F7931A]/5 px-3 py-1 rounded-lg whitespace-nowrap">
+                      {work.period}
+                    </span>
+                  </div>
+
+                  <p className="font-mono text-xs text-[#94A3B8] tracking-wider uppercase mb-5">
+                    {work.location}
+                  </p>
+
+                  <ul className="space-y-3">
+                    {work.highlights.map((item) => (
+                      <li key={item.label} className="flex gap-3 text-sm">
+                        <span className="text-[#F7931A] mt-0.5 flex-shrink-0">▸</span>
+                        <span className="text-[#94A3B8] leading-relaxed">
+                          <strong className="text-white font-semibold">{item.label}: </strong>
+                          {item.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

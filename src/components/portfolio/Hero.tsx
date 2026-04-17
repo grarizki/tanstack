@@ -1,15 +1,53 @@
 export default function Hero() {
   return (
-    <main className="grid lg:grid-cols-1 place-items-center pt-16 pb-8 md:pt-12 md:pb-18 relative z-10">
-      <div className="animate-on-scroll p-8 rounded-2xl bg-white/60 dark:bg-white/5 backdrop-blur-lg border border-gray-200 dark:border-white/10 shadow-2xl max-w-4xl mx-auto">
-        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-400 text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-center leading-tight">
-          Building Modern Web Experiences with Code and Creativity.
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-grid-pattern" />
+
+      {/* Ambient radial glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#F7931A] opacity-5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-[#EA580C] opacity-5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="animate-on-scroll relative z-10 text-center max-w-5xl mx-auto px-4 py-32">
+        {/* Live badge */}
+        <div className="inline-flex items-center gap-2 font-mono text-xs text-[#94A3B8] tracking-widest uppercase border border-white/10 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full mb-10">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F7931A] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F7931A]" />
+          </span>
+          Available for work
+        </div>
+
+        <h1 className="font-heading font-bold text-5xl sm:text-6xl md:text-7xl leading-tight mb-8">
+          <span className="text-white">Building Modern</span>
+          <br />
+          <span className="text-white">Web Experiences</span>
+          <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F7931A] to-[#FFD600]">
+            with Precision.
+          </span>
         </h1>
-        <p className="text-gray-900 dark:text-gray-300 text-lg mt-4 text-center max-w-2xl mx-auto">
-          Crafting digital masterpieces with cutting-edge technology and premium
-          design.
+
+        <p className="font-body text-[#94A3B8] text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
+          Frontend Engineer based in Jakarta, Indonesia. Crafting high-performance
+          interfaces with React, TypeScript, and modern tooling.
         </p>
+
+        <div className="flex flex-wrap gap-4 justify-center">
+          <a
+            href="mailto:raka.grarizki@gmail.com"
+            className="font-mono text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-[#EA580C] to-[#F7931A] text-white px-8 py-3 rounded-full shadow-[0_0_20px_-5px_rgba(234,88,12,0.5)] hover:shadow-[0_0_30px_-5px_rgba(247,147,26,0.6)] hover:scale-105 transition-all duration-300 min-h-[44px] flex items-center"
+          >
+            Get In Touch
+          </a>
+          <a
+            href="#work"
+            className="font-mono text-xs font-bold uppercase tracking-widest border-2 border-white/20 text-white px-8 py-3 rounded-full hover:border-white hover:bg-white/10 transition-all duration-300 min-h-[44px] flex items-center"
+          >
+            View Work
+          </a>
+        </div>
       </div>
-    </main>
+    </section>
   )
 }

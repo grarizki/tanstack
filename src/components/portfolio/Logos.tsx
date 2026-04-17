@@ -44,11 +44,11 @@ export default function Logos() {
   }, [])
 
   return (
-    <div ref={containerRef} className="mt-24">
-      <h2 className="text-center text-slate-900 dark:text-slate-200">
-        Have been working using
-      </h2>
-      <div className="flex gap-8 md:gap-20 items-center justify-center my-10 flex-wrap">
+    <div ref={containerRef} className="py-16 border-y border-white/5">
+      <p className="font-mono text-xs text-[#94A3B8] tracking-widest uppercase text-center mb-10">
+        Tools &amp; Technologies
+      </p>
+      <div className="flex gap-8 md:gap-16 items-center justify-center flex-wrap">
         {tools.map(({ Icon, label, href }) => (
           <a
             key={label}
@@ -57,9 +57,14 @@ export default function Logos() {
             rel="noopener noreferrer"
             aria-label={label}
             title={label}
-            className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+            className="group flex flex-col items-center gap-3"
           >
-            <Icon className="w-8 h-8 md:w-12 md:h-12" size={48} />
+            <div className="bg-[#EA580C]/10 border border-[#EA580C]/30 rounded-xl p-4 text-[#F7931A] group-hover:border-[#F7931A]/60 group-hover:bg-[#EA580C]/20 group-hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-all duration-300">
+              <Icon className="w-7 h-7 md:w-8 md:h-8" />
+            </div>
+            <span className="font-mono text-xs text-[#94A3B8] tracking-wider group-hover:text-[#F7931A] transition-colors duration-200">
+              {label}
+            </span>
           </a>
         ))}
       </div>

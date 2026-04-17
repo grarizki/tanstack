@@ -11,16 +11,14 @@ export const Route = createFileRoute('/')({
 
 function HomePage() {
   return (
-    <Container>
-      <div
-        id="home"
-        className="scroll-mt-24"
-      >
-        <Hero />
-      </div>
-      <Logos />
-      <WorkSection />
-      <AboutSection />
-    </Container>
+    <div className="pt-16">
+      {/* Hero is full-width, outside the container */}
+      <Hero />
+      <Container>
+        <Logos />
+        <WorkSection />
+        <AboutSection />
+      </Container>
+    </div>
   )
 }

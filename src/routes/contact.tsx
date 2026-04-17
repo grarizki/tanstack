@@ -25,36 +25,36 @@ function ContactPage() {
   return (
     <Container>
       <Sectionhead>
-        <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-black dark:text-white">
+        <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-stone-800 dark:text-amber-50">
           Contact
         </h1>
-        <p className="text-lg mt-4 text-slate-600 dark:text-slate-400">
+        <p className="text-lg mt-4 text-stone-500 dark:text-amber-300">
           We are here to help.
         </p>
       </Sectionhead>
 
       <div className="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
         <div>
-          <h2 className="font-medium text-2xl text-gray-800 dark:text-gray-200">
+          <h2 className="font-medium text-2xl text-stone-700 dark:text-amber-100">
             Contact Me!
           </h2>
-          <p className="text-lg leading-relaxed text-slate-500 mt-3">
+          <p className="text-lg leading-relaxed text-stone-500 mt-3">
             Have something to say? We are here to help. Fill up the form or send
             email or call phone.
           </p>
           <div className="mt-5 space-y-3">
-            <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
-              <MapPin className="text-gray-400 w-4 h-4" />
+            <div className="flex items-center space-x-2 text-stone-500 dark:text-amber-300">
+              <MapPin className="text-stone-400 w-4 h-4" />
               <span>Jakarta, Indonesia</span>
             </div>
-            <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
-              <Mail className="text-gray-400 w-4 h-4" />
+            <div className="flex items-center space-x-2 text-stone-500 dark:text-amber-300">
+              <Mail className="text-stone-400 w-4 h-4" />
               <a href="mailto:raka.grarizki@gmail.com" className="hover:underline">
                 raka.grarizki@gmail.com
               </a>
             </div>
-            <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
-              <Phone className="text-gray-400 w-4 h-4" />
+            <div className="flex items-center space-x-2 text-stone-500 dark:text-amber-300">
+              <Phone className="text-stone-400 w-4 h-4" />
               <a href="tel:+6281224183361" className="hover:underline">
                 +62 812 2418 3361
               </a>
@@ -87,7 +87,7 @@ function ContactPage() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-medium text-stone-600 dark:text-amber-200"
                 >
                   Name
                 </label>
@@ -100,14 +100,14 @@ function ContactPage() {
                   onChange={(e) =>
                     setFormState({ ...formState, name: e.target.value })
                   }
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-emerald-500 focus:ring-emerald-500 px-3 py-2 border"
+                  className="mt-1 block w-full rounded-md border-stone-300 dark:border-gray-600 bg-amber-50/80 dark:bg-stone-800 text-stone-800 dark:text-amber-50 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 px-3 py-2 border"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-medium text-stone-600 dark:text-amber-200"
                 >
                   Email
                 </label>
@@ -120,14 +120,14 @@ function ContactPage() {
                   onChange={(e) =>
                     setFormState({ ...formState, email: e.target.value })
                   }
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-emerald-500 focus:ring-emerald-500 px-3 py-2 border"
+                  className="mt-1 block w-full rounded-md border-stone-300 dark:border-gray-600 bg-amber-50/80 dark:bg-stone-800 text-stone-800 dark:text-amber-50 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 px-3 py-2 border"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-medium text-stone-600 dark:text-amber-200"
                 >
                   Message
                 </label>
@@ -140,7 +140,7 @@ function ContactPage() {
                   onChange={(e) =>
                     setFormState({ ...formState, message: e.target.value })
                   }
-                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-emerald-500 focus:ring-emerald-500 px-3 py-2 border"
+                  className="mt-1 block w-full rounded-md border-stone-300 dark:border-gray-600 bg-amber-50/80 dark:bg-stone-800 text-stone-800 dark:text-amber-50 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 px-3 py-2 border"
                 />
               </div>
 

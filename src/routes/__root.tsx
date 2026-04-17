@@ -3,10 +3,10 @@ import { useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import { ThemeProvider } from '../lib/theme.tsx'
 import Navbar from '../components/portfolio/Navbar'
 import Footer from '../components/portfolio/Footer'
 import ThreeDitherBackground from '../components/portfolio/ThreeDitherBackground'
+import { ThemeProvider } from '../lib/theme'
 
 import appCss from '../styles.css?url'
 
@@ -44,7 +44,7 @@ export const Route = createRootRoute({
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@100..900&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap',
       },
     ],
   }),
@@ -83,26 +83,24 @@ function RootComponent() {
     }
   }, [])
 
-  return (
-    <ThemeProvider>
-      <RootDocument />
-    </ThemeProvider>
-  )
+  return <RootDocument />
 }
 
 function RootDocument() {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>
-      <body className="text-black dark:text-white bg-white dark:bg-black transition-colors duration-300">
-        <ThreeDitherBackground />
-        <Navbar />
-        <div className="min-h-screen">
-          <Outlet />
-        </div>
-        <Footer />
+      <body className="text-white bg-[#030304]">
+        <ThemeProvider>
+          <ThreeDitherBackground />
+          <Navbar />
+          <div className="min-h-screen">
+            <Outlet />
+          </div>
+          <Footer />
+        </ThemeProvider>
         <Scripts />
       </body>
     </html>

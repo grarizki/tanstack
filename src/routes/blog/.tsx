@@ -25,7 +25,7 @@ function BlogPostPage() {
       <article className="max-w-3xl mx-auto mt-8">
         <Link
           to="/blog"
-          className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 mb-6"
+          className="inline-flex items-center text-stone-500 dark:text-amber-300 hover:text-emerald-600 dark:hover:text-emerald-400 mb-6"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Blog
@@ -41,11 +41,11 @@ function BlogPostPage() {
           {post.category}
         </span>
 
-        <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-black dark:text-white mt-2 mb-4">
+        <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-stone-800 dark:text-amber-50 mt-2 mb-4">
           {post.title}
         </h1>
 
-        <div className="flex items-center gap-4 text-gray-400 text-sm mb-8">
+        <div className="flex items-center gap-4 text-stone-400 text-sm mb-8">
           <span>{post.author}</span>
           <span>•</span>
           <time dateTime={post.publishDate}>
@@ -62,12 +62,12 @@ function BlogPostPage() {
           </ReactMarkdown>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-white/10">
+        <div className="mt-8 pt-8 border-t border-stone-300 dark:border-white/10">
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs font-mono text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-white/5 rounded-full"
+                className="px-3 py-1 text-xs font-mono text-stone-500 dark:text-amber-300 bg-stone-200 dark:bg-white/5 rounded-full"
               >
                 {tag}
               </span>
