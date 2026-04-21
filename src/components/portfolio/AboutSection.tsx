@@ -1,10 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-}
 
 const techStack = [
   'React',
@@ -32,21 +27,17 @@ export default function AboutSection() {
 
     const ctx = gsap.context(() => {
       elements.forEach((element) => {
-        gsap.fromTo(
-          element,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: element,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        )
+        gsap.to(element, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+        })
       })
     }, sectionRef)
 
@@ -57,7 +48,7 @@ export default function AboutSection() {
     <section id="about" className="scroll-mt-24 relative z-10 py-24" ref={sectionRef}>
       {/* Section header */}
       <div className="animate-on-scroll text-center mb-16">
-        <p className="font-mono text-xs text-[#F7931A] tracking-widest uppercase mb-3">
+        <p className="font-mono text-xs text-emerald-500 tracking-widest uppercase mb-3">
           Background
         </p>
         <h2 className="font-heading font-bold text-4xl md:text-5xl text-white">
@@ -67,15 +58,15 @@ export default function AboutSection() {
 
       <div className="grid md:grid-cols-2 gap-10 max-w-screen-lg mx-auto">
         {/* Bio card */}
-        <div className="animate-on-scroll relative bg-[#0F1115] border border-white/10 rounded-2xl p-8 hover:-translate-y-1 hover:border-[#F7931A]/40 hover:shadow-[0_0_30px_-10px_rgba(247,147,26,0.2)] transition-all duration-300">
-          <span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-[#F7931A]/60" />
-          <span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-[#F7931A]/60" />
+        <div className="animate-on-scroll relative bg-[#0F1115] border border-white/10 rounded-2xl p-8 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-[0_0_30px_-10px_rgba(16,185,129,0.2)] transition-all duration-300 cursor-pointer">
+          <span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-emerald-500/60" />
+          <span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-emerald-500/60" />
 
           <h3 className="font-heading font-semibold text-xl text-white mb-4">Who I Am</h3>
           <p className="font-body text-[#94A3B8] leading-relaxed mb-6">
             Hi! I&apos;m a <strong className="text-white">Frontend Engineer</strong> based in Jakarta, Indonesia,
             obsessed with building{' '}
-            <span className="text-[#F7931A] font-semibold">type-safe, high-performance applications</span>. I specialize in the{' '}
+            <span className="text-emerald-500 font-semibold">type-safe, high-performance applications</span>. I specialize in the{' '}
             <strong className="text-white">React ecosystem</strong>, leveraging powerful tools to create robust,
             scalable, and seamless user experiences.
           </p>
@@ -87,7 +78,7 @@ export default function AboutSection() {
             {techStack.map((tech) => (
               <span
                 key={tech}
-                className="font-mono text-xs text-[#F7931A] bg-[#F7931A]/10 border border-[#F7931A]/20 px-3 py-1 rounded-lg hover:bg-[#F7931A]/20 hover:border-[#F7931A]/40 transition-all duration-200 cursor-default"
+                className="font-mono text-xs text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-lg hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-200 cursor-default"
               >
                 {tech}
               </span>
@@ -97,7 +88,7 @@ export default function AboutSection() {
           <div className="flex flex-wrap gap-3">
             <a
               href="mailto:raka.grarizki@gmail.com"
-              className="font-mono text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-[#EA580C] to-[#F7931A] text-white px-6 py-2.5 rounded-full shadow-[0_0_20px_-5px_rgba(234,88,12,0.5)] hover:shadow-[0_0_30px_-5px_rgba(247,147,26,0.6)] hover:scale-105 transition-all duration-300"
+              className="font-mono text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-6 py-2.5 rounded-full shadow-[0_0_20px_-5px_rgba(5,150,105,0.5)] hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.6)] hover:scale-105 transition-all duration-300"
             >
               Contact Me
             </a>
@@ -117,10 +108,10 @@ export default function AboutSection() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="relative bg-[#0F1115] border border-white/10 rounded-2xl p-6 hover:-translate-y-1 hover:border-[#F7931A]/40 hover:shadow-[0_0_30px_-10px_rgba(247,147,26,0.2)] transition-all duration-300 flex items-center gap-6"
+              className="relative bg-[#0F1115] border border-white/10 rounded-2xl p-6 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-[0_0_30px_-10px_rgba(16,185,129,0.2)] transition-all duration-300 flex items-center gap-6 cursor-pointer"
             >
-              <span className="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-[#FFD600]/50" />
-              <h4 className="font-heading font-bold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#F7931A] to-[#FFD600] leading-none flex-shrink-0">
+              <span className="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-emerald-300/50" />
+              <h4 className="font-heading font-bold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-emerald-300 leading-none flex-shrink-0">
                 {stat.value}
               </h4>
               <p className="font-mono text-xs text-[#94A3B8] tracking-wider uppercase leading-snug">

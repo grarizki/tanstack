@@ -54,32 +54,10 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    // Only register scroll animations when the user has no motion preference (issue #1)
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!prefersReduced) {
       gsap.registerPlugin(ScrollTrigger)
-      
-      // Initialize animations
-      const initAnimations = () => {
-        const elements = document.querySelectorAll('.animate-on-scroll')
-        elements.forEach((element) => {
-          gsap.fromTo(
-            element,
-            { opacity: 0, y: 30 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: element,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse',
-              },
-            }
-          )
-        })
-      }
-
-      initAnimations()
     }
   }, [])
 
@@ -93,12 +71,19 @@ function RootDocument() {
         <HeadContent />
       </head>
       <body className="text-white bg-[#030304]">
+        {/* Skip link — keyboard users jump straight to content (issue #4) */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-emerald-500 focus:text-white focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:rounded-full"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider>
           <ThreeDitherBackground />
           <Navbar />
-          <div className="min-h-screen">
+          <main id="main-content" className="min-h-screen">
             <Outlet />
-          </div>
+          </main>
           <Footer />
         </ThemeProvider>
         <Scripts />

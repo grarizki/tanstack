@@ -4,10 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FaReact, FaGithub, FaFigma, FaDatabase } from 'react-icons/fa'
 import { FaJs } from 'react-icons/fa6'
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-}
-
 const tools = [
   { Icon: FaReact, label: 'React', href: 'https://react.dev/' },
   { Icon: FaJs, label: 'TypeScript', href: 'https://www.typescriptlang.org/' },
@@ -45,7 +41,7 @@ export default function Logos() {
 
   return (
     <div ref={containerRef} className="py-16 border-y border-white/5">
-      <p className="font-mono text-xs text-[#94A3B8] tracking-widest uppercase text-center mb-10">
+      <p className="font-mono text-xs text-slate-400 tracking-widest uppercase text-center mb-10">
         Tools &amp; Technologies
       </p>
       <div className="flex gap-8 md:gap-16 items-center justify-center flex-wrap">
@@ -59,10 +55,10 @@ export default function Logos() {
             title={label}
             className="group flex flex-col items-center gap-3"
           >
-            <div className="bg-[#EA580C]/10 border border-[#EA580C]/30 rounded-xl p-4 text-[#F7931A] group-hover:border-[#F7931A]/60 group-hover:bg-[#EA580C]/20 group-hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-all duration-300">
+            <div className="bg-emerald-600/10 border border-emerald-600/30 rounded-xl p-4 text-emerald-500 group-hover:border-emerald-500/60 group-hover:bg-emerald-600/20 group-hover:shadow-[0_0_20px_rgba(5,150,105,0.3)] transition-all duration-300">
               <Icon className="w-7 h-7 md:w-8 md:h-8" />
             </div>
-            <span className="font-mono text-xs text-[#94A3B8] tracking-wider group-hover:text-[#F7931A] transition-colors duration-200">
+            <span className="font-mono text-sm text-slate-300 tracking-wide group-hover:text-emerald-400 transition-colors duration-200">
               {label}
             </span>
           </a>

@@ -121,10 +121,10 @@ const particleFragmentShader = `
 `
 
 const COLORS = {
-  color1: new THREE.Color(0xF7931A),
-  color2: new THREE.Color(0xEA580C),
-  color3: new THREE.Color(0xFFD600),
-  particleColor: new THREE.Color(0xF7931A),
+  color1: new THREE.Color(0x10B981),
+  color2: new THREE.Color(0x059669),
+  color3: new THREE.Color(0x34D399),
+  particleColor: new THREE.Color(0x10B981),
   intensity: 1.4,
   bloomStrength: 0.6,
   bloomRadius: 0.5,
@@ -143,7 +143,7 @@ export default function ThreeDitherBackground() {
     bloomPass: UnrealBloomPass
     auroraUniforms: Record<string, THREE.IUniform>
     particleUniforms: Record<string, THREE.IUniform>
-    clock: THREE.Clock
+    clock: THREE.Timer
     animId: number
     disposed: boolean
   } | null>(null)
@@ -152,6 +152,9 @@ export default function ThreeDitherBackground() {
   useEffect(() => {
     if (!containerRef.current) return
     if (window.innerWidth <= 768) return
+
+    // Respect prefers-reduced-motion — skip the entire Three.js scene (issue #1)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const container = containerRef.current
     while (container.firstChild) container.removeChild(container.firstChild)
@@ -239,7 +242,7 @@ export default function ThreeDitherBackground() {
     )
     scene.add(particleMesh)
 
-    const clock = new THREE.Clock()
+    const clock = new THREE.Timer()
     const sceneState = {
       renderer, composer, bloomPass, auroraUniforms, particleUniforms,
       clock, animId: 0, disposed: false,
@@ -253,15 +256,26 @@ export default function ThreeDitherBackground() {
     }
     window.addEventListener('mousemove', handleMouse)
 
-    const animate = () => {
+    const animate = (timestamp: number) => {
       if (sceneState.disposed) return
       sceneState.animId = requestAnimationFrame(animate)
-      const t = clock.getElapsedTime()
+      clock.update(timestamp)
+      const t = clock.getElapsed()
       auroraUniforms.uTime.value = t
       particleUniforms.uTime.value = t
       composer.render()
     }
-    animate()
+    animate(0)
+
+    // Pause animation when tab is hidden to save battery (issue #12)
+    const handleVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(sceneState.animId)
+      } else if (!sceneState.disposed) {
+        animate(performance.now())
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
 
     const handleResize = () => {
       if (window.innerWidth <= 768) { container.style.display = 'none'; return }
@@ -277,6 +291,7 @@ export default function ThreeDitherBackground() {
       cancelAnimationFrame(sceneState.animId)
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouse)
+      document.removeEventListener('visibilitychange', handleVisibility)
       renderer.dispose()
       scene.traverse((obj) => {
         if (obj instanceof THREE.Mesh || obj instanceof THREE.Points) {

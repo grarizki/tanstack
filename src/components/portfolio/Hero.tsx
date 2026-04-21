@@ -5,15 +5,15 @@ export default function Hero() {
       <div className="absolute inset-0 bg-grid-pattern" />
 
       {/* Ambient radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#F7931A] opacity-5 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-[#EA580C] opacity-5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500 opacity-5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-emerald-600 opacity-5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="animate-on-scroll relative z-10 text-center max-w-5xl mx-auto px-4 py-32">
+      <div className="animate-fade-up relative z-10 text-center max-w-5xl mx-auto px-4 py-32">
         {/* Live badge */}
         <div className="inline-flex items-center gap-2 font-mono text-xs text-[#94A3B8] tracking-widest uppercase border border-white/10 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full mb-10">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F7931A] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F7931A]" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
           Available for work
         </div>
@@ -23,7 +23,7 @@ export default function Hero() {
           <br />
           <span className="text-white">Web Experiences</span>
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F7931A] to-[#FFD600]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-emerald-300">
             with Precision.
           </span>
         </h1>
@@ -36,7 +36,7 @@ export default function Hero() {
         <div className="flex flex-wrap gap-4 justify-center">
           <a
             href="mailto:raka.grarizki@gmail.com"
-            className="font-mono text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-[#EA580C] to-[#F7931A] text-white px-8 py-3 rounded-full shadow-[0_0_20px_-5px_rgba(234,88,12,0.5)] hover:shadow-[0_0_30px_-5px_rgba(247,147,26,0.6)] hover:scale-105 transition-all duration-300 min-h-[44px] flex items-center"
+            className="font-mono text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-8 py-3 rounded-full shadow-[0_0_20px_-5px_rgba(16,185,129,0.5)] hover:shadow-[0_0_30px_-5px_rgba(52,211,153,0.6)] hover:scale-105 transition-all duration-300 min-h-[44px] flex items-center"
           >
             Get In Touch
           </a>

@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import Container from '../components/portfolio/Container'
 import Hero from '../components/portfolio/Hero'
 import Logos from '../components/portfolio/Logos'
+import ProjectsSection from '../components/portfolio/ProjectsSection'
 import WorkSection from '../components/portfolio/WorkSection'
 import AboutSection from '../components/portfolio/AboutSection'
 
@@ -16,6 +17,7 @@ function HomePage() {
       <Hero />
       <Container>
         <Logos />
+        <ProjectsSection />
         <WorkSection />
         <AboutSection />
       </Container>
