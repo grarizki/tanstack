@@ -15,10 +15,10 @@ describe('AboutSection', () => {
     expect(screen.getByText('Problem Solver')).toBeInTheDocument()
   })
 
-  it('renders "Who I Am" heading', () => {
+  it('renders "Who Am I" heading', () => {
     render(<AboutSection />)
     
-    expect(screen.getByText('Who I Am')).toBeInTheDocument()
+    expect(screen.getByText('Who Am I')).toBeInTheDocument()
   })
 
   it('renders "Tech Stack" heading', () => {

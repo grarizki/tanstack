@@ -62,7 +62,7 @@ export default function AboutSection() {
           <span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-emerald-500/60" />
           <span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-emerald-500/60" />
 
-          <h3 className="font-heading font-semibold text-xl text-white mb-4">Who I Am</h3>
+          <h3 className="font-heading font-semibold text-xl text-white mb-4">Who Am I</h3>
           <p className="font-body text-[#94A3B8] leading-relaxed mb-6">
             Hi! I&apos;m a <strong className="text-white">Frontend Engineer</strong> based in Jakarta, Indonesia,
             obsessed with building{' '}
