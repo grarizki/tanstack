@@ -161,7 +161,7 @@ function WorkPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <div>
               <h2 className="font-heading font-bold text-2xl md:text-3xl text-white">
-                Looking for a frontend engineer?
+                Looking for a software engineer?
               </h2>
               <p className="font-body text-[#94A3B8] mt-2 max-w-[45ch]">
                 I&apos;m open to remote roles and collaborations. Let&apos;s talk

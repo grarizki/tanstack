@@ -104,7 +104,7 @@ function AboutPage() {
               applications.
             </h1>
             <p className="font-body text-lg text-[#94A3B8] leading-relaxed mt-6 max-w-[60ch]">
-              I&apos;m a frontend engineer based in Jakarta, Indonesia. I turn
+              I&apos;m a software engineer based in Jakarta, Indonesia. I turn
               complex requirements into interfaces that feel quick and
               effortless, working in{' '}
               <span className="text-white font-medium">React</span> and{' '}
