@@ -18,12 +18,12 @@ const projects = [
 		period: "2022",
 	},
 	{
-		title: "Customer Portal",
+		title: "Fasting Tracker",
 		description:
-			"Developed a self-service portal for customers to manage loan applications and documents, reducing support tickets by 30%.",
-		tags: ["Next.js", "TypeScript", "REST API"],
+			"Cross-platform intermittent fasting app built with Flutter. Offline-first with animated timer, meal tracking, local notifications, history & stats, and one-tap data export.",
+		tags: ["Flutter", "Dart", "Riverpod", "SQLite"],
 		href: "https://github.com/grarizki/intermittenApp",
-		period: "2022",
+		period: "2025",
 	},
 ];
 
