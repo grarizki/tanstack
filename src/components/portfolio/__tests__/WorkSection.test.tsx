@@ -1,41 +1,42 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import WorkSection from '../WorkSection'
+import { describe, it, expect, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
 
-describe('WorkSection', () => {
-  it('renders section title', () => {
-    render(<WorkSection />)
-    
-    expect(screen.getByText('Work Experience')).toBeInTheDocument()
-  })
+// Mock the useScrollReveal hook to avoid GSAP/React conflicts in jsdom
+vi.mock("../../../hooks/useScrollReveal", () => ({
+	useScrollReveal: () => ({ current: null }),
+}));
 
-  it('renders BFI Finance job', () => {
-    render(<WorkSection />)
-    
-    expect(screen.getByText(/PT. BFI Finance Indonesia/i)).toBeInTheDocument()
-    expect(screen.getByText('Nov 2022 — Present')).toBeInTheDocument()
-  })
+import WorkSection from "../WorkSection";
 
-  it('renders Nusa Data Hexamatika job', () => {
-    render(<WorkSection />)
-    
-    expect(screen.getByText(/PT. Nusa Data Hexamatika/i)).toBeInTheDocument()
-    expect(screen.getByText('Dec 2021 — Nov 2022')).toBeInTheDocument()
-  })
+describe("WorkSection", () => {
+	it("renders section title", () => {
+		render(<WorkSection />);
+		expect(screen.getByText("Work History")).toBeInTheDocument();
+	});
 
-  it('renders job responsibilities', () => {
-    render(<WorkSection />)
-    
-    expect(screen.getByText(/UI Redesign/i)).toBeInTheDocument()
-    expect(screen.getByText(/Mobile-First/i)).toBeInTheDocument()
-    expect(screen.getByText(/Performance/i)).toBeInTheDocument()
-    expect(screen.getByText(/User-Centric Solutions/i)).toBeInTheDocument()
-  })
+	it("renders BFI Finance job", () => {
+		render(<WorkSection />);
+		expect(screen.getByText(/PT. BFI Finance Indonesia/i)).toBeInTheDocument();
+	});
 
-  it('has correct section id', () => {
-    const { container } = render(<WorkSection />)
-    
-    const section = container.querySelector('section')
-    expect(section).toHaveAttribute('id', 'work')
-  })
-})
+	it("renders job highlights", () => {
+		render(<WorkSection />);
+		expect(
+			screen.getByText((content) => content.includes("UI Redesign")),
+		).toBeInTheDocument();
+		expect(
+			screen.getByText((content) => content.includes("Mobile-First")),
+		).toBeInTheDocument();
+		// "Performance" appears in two highlight labels; use getAllByText
+		const perfMatches = screen.getAllByText((content) =>
+			content.includes("Performance"),
+		);
+		expect(perfMatches.length).toBeGreaterThanOrEqual(2);
+	});
+
+	it("has correct section id", () => {
+		const { container } = render(<WorkSection />);
+		const section = container.querySelector("section");
+		expect(section).toHaveAttribute("id", "work");
+	});
+});

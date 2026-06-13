@@ -1,26 +1,28 @@
 export interface BlogPost {
-  slug: string
-  draft: boolean
-  title: string
-  snippet: string
-  content: string
-  image: {
-    src: string
-    alt: string
-  }
-  publishDate: string
-  author: string
-  category: string
-  tags: string[]
+	slug: string;
+	draft: boolean;
+	title: string;
+	snippet: string;
+	content: string;
+	image: {
+		src: string;
+		alt: string;
+	};
+	publishDate: string;
+	author: string;
+	category: string;
+	tags: string[];
 }
 
 export const blogPosts: BlogPost[] = [
-  {
-    slug: 'andrej-karpathy-ai-vision',
-    draft: false,
-    title: "Andrej Karpathy's Vision for AI: Agents, Software 3.0, and Vibe Coding",
-    snippet: "Explore Andrej Karpathy's latest insights on AI agents, the shift to Software 3.0, and why he believes 'vibe coding' is the future.",
-    content: `Andrej Karpathy, a prominent figure in AI research and founder of Eureka Labs, has shared several key perspectives on artificial intelligence in late 2024 and 2025, emphasizing a grounded and often contrarian view amidst much of the industry's hype. His insights span the development of AI agents, the evolution of software, the limitations of current AI training methods, and the importance of data quality.
+	{
+		slug: "andrej-karpathy-ai-vision",
+		draft: false,
+		title:
+			"Andrej Karpathy's Vision for AI: Agents, Software 3.0, and Vibe Coding",
+		snippet:
+			"Explore Andrej Karpathy's latest insights on AI agents, the shift to Software 3.0, and why he believes 'vibe coding' is the future.",
+		content: `Andrej Karpathy, a prominent figure in AI research and founder of Eureka Labs, has shared several key perspectives on artificial intelligence in late 2024 and 2025, emphasizing a grounded and often contrarian view amidst much of the industry's hype. His insights span the development of AI agents, the evolution of software, the limitations of current AI training methods, and the importance of data quality.
 
 ## AI Agents: A Decade Project
 
@@ -43,21 +45,22 @@ In February 2025, Karpathy coined the term "vibe coding" to describe how AI tool
 ## The "Iron Man Suit"
 
 Karpathy advocates for building "Iron Man suits"—AI tools that augment humans rather than fully replacing them, allowing humans to stay in the loop and adjust AI autonomy. He believes that the internet is full of "garbage" data, and training models on clean, curated data could lead to very intelligent cognitive cores even with fewer parameters.`,
-    image: {
-      src: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      alt: 'AI Vision'
-    },
-    publishDate: '2025-11-22',
-    author: 'Raka Grarizki',
-    category: 'Artificial Intelligence',
-    tags: ['ai', 'future', 'software 3.0', 'agents']
-  },
-  {
-    slug: 'future-web-development-2025',
-    draft: false,
-    title: 'The Future of Web Development: 2025 Trends',
-    snippet: 'Discover the top trends shaping the future of web development in 2025, from AI-driven coding to WebAssembly.',
-    content: `Web development is evolving rapidly. In 2025, we are seeing a massive shift towards AI-assisted development, edge computing, and new frameworks that prioritize performance and developer experience.
+		image: {
+			src: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+			alt: "AI Vision",
+		},
+		publishDate: "2025-11-22",
+		author: "Raka Grarizki",
+		category: "Artificial Intelligence",
+		tags: ["ai", "future", "software 3.0", "agents"],
+	},
+	{
+		slug: "future-web-development-2025",
+		draft: false,
+		title: "The Future of Web Development: 2025 Trends",
+		snippet:
+			"Discover the top trends shaping the future of web development in 2025, from AI-driven coding to WebAssembly.",
+		content: `Web development is evolving rapidly. In 2025, we are seeing a massive shift towards AI-assisted development, edge computing, and new frameworks that prioritize performance and developer experience.
 
 ## Key Trends
 
@@ -70,21 +73,22 @@ Karpathy advocates for building "Iron Man suits"—AI tools that augment humans 
 4. **Server Components**: React Server Components and similar patterns are changing how we build applications.
 
 5. **Type Safety**: Full-stack type safety is becoming the standard expectation.`,
-    image: {
-      src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      alt: 'Web Development Trends'
-    },
-    publishDate: '2025-01-15',
-    author: 'Raka Grarizki',
-    category: 'Technology',
-    tags: ['webdev', 'trends', '2025']
-  },
-  {
-    slug: 'mastering-typescript-2025',
-    draft: false,
-    title: 'Mastering TypeScript in 2025',
-    snippet: "A comprehensive guide to mastering TypeScript's latest features and best practices for scalable applications.",
-    content: `TypeScript continues to dominate the frontend landscape. Here's how to stay ahead with the latest features and patterns.
+		image: {
+			src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+			alt: "Web Development Trends",
+		},
+		publishDate: "2025-01-15",
+		author: "Raka Grarizki",
+		category: "Technology",
+		tags: ["webdev", "trends", "2025"],
+	},
+	{
+		slug: "mastering-typescript-2025",
+		draft: false,
+		title: "Mastering TypeScript in 2025",
+		snippet:
+			"A comprehensive guide to mastering TypeScript's latest features and best practices for scalable applications.",
+		content: `TypeScript continues to dominate the frontend landscape. Here's how to stay ahead with the latest features and patterns.
 
 ## What's New in TypeScript 5.x
 
@@ -100,21 +104,22 @@ Karpathy advocates for building "Iron Man suits"—AI tools that augment humans 
 3. Avoid any types
 4. Use discriminated unions for complex state
 5. Implement proper error handling with types`,
-    image: {
-      src: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      alt: 'TypeScript Code'
-    },
-    publishDate: '2025-02-10',
-    author: 'Raka Grarizki',
-    category: 'Programming',
-    tags: ['typescript', 'coding', 'guide']
-  },
-  {
-    slug: 'why-astro-best-portfolio',
-    draft: false,
-    title: 'Why Astro is the Best Choice for Your Portfolio',
-    snippet: "Learn why Astro's island architecture makes it the perfect framework for building high-performance portfolios.",
-    content: `Astro has revolutionized how we build static sites. Its performance benefits are undeniable, making it an excellent choice for portfolios.
+		image: {
+			src: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+			alt: "TypeScript Code",
+		},
+		publishDate: "2025-02-10",
+		author: "Raka Grarizki",
+		category: "Programming",
+		tags: ["typescript", "coding", "guide"],
+	},
+	{
+		slug: "why-astro-best-portfolio",
+		draft: false,
+		title: "Why Astro is the Best Choice for Your Portfolio",
+		snippet:
+			"Learn why Astro's island architecture makes it the perfect framework for building high-performance portfolios.",
+		content: `Astro has revolutionized how we build static sites. Its performance benefits are undeniable, making it an excellent choice for portfolios.
 
 ## Why Astro?
 
@@ -127,21 +132,22 @@ Karpathy advocates for building "Iron Man suits"—AI tools that augment humans 
 ## Performance Benefits
 
 Astro sites consistently achieve perfect lighthouse scores due to minimal JavaScript and optimal resource loading.`,
-    image: {
-      src: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      alt: 'Astro Framework'
-    },
-    publishDate: '2025-03-05',
-    author: 'Raka Grarizki',
-    category: 'Frameworks',
-    tags: ['astro', 'portfolio', 'performance']
-  },
-  {
-    slug: 'designing-accessibility-guide',
-    draft: true,
-    title: "Designing for Accessibility: A Developer's Guide",
-    snippet: 'Essential tips and tools for ensuring your web applications are accessible to everyone.',
-    content: `Accessibility is not just a feature; it's a necessity. Here is how you can improve your applications for all users.
+		image: {
+			src: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+			alt: "Astro Framework",
+		},
+		publishDate: "2025-03-05",
+		author: "Raka Grarizki",
+		category: "Frameworks",
+		tags: ["astro", "portfolio", "performance"],
+	},
+	{
+		slug: "designing-accessibility-guide",
+		draft: true,
+		title: "Designing for Accessibility: A Developer's Guide",
+		snippet:
+			"Essential tips and tools for ensuring your web applications are accessible to everyone.",
+		content: `Accessibility is not just a feature; it's a necessity. Here is how you can improve your applications for all users.
 
 ## Key Principles
 
@@ -150,21 +156,22 @@ Astro sites consistently achieve perfect lighthouse scores due to minimal JavaSc
 3. **ARIA Labels**: Provide context for screen readers
 4. **Color Contrast**: Meet WCAG guidelines
 5. **Focus Management**: Handle focus properly in interactive elements`,
-    image: {
-      src: 'https://images.unsplash.com/photo-1586717791821-3f44a5638d48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      alt: 'Accessibility'
-    },
-    publishDate: '2025-04-20',
-    author: 'Raka Grarizki',
-    category: 'Design',
-    tags: ['a11y', 'design', 'inclusive']
-  },
-  {
-    slug: 'rise-serverless-computing',
-    draft: false,
-    title: 'The Rise of Serverless Computing',
-    snippet: 'Understanding the benefits and challenges of adopting a serverless architecture for your next project.',
-    content: `Serverless computing is changing the way we deploy applications. Is it right for you?
+		image: {
+			src: "https://images.unsplash.com/photo-1586717791821-3f44a5638d48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+			alt: "Accessibility",
+		},
+		publishDate: "2025-04-20",
+		author: "Raka Grarizki",
+		category: "Design",
+		tags: ["a11y", "design", "inclusive"],
+	},
+	{
+		slug: "rise-serverless-computing",
+		draft: false,
+		title: "The Rise of Serverless Computing",
+		snippet:
+			"Understanding the benefits and challenges of adopting a serverless architecture for your next project.",
+		content: `Serverless computing is changing the way we deploy applications. Is it right for you?
 
 ## Benefits
 
@@ -179,21 +186,24 @@ Astro sites consistently achieve perfect lighthouse scores due to minimal JavaSc
 2. **Vendor Lock-in**: Tied to specific cloud providers
 3. **Debugging**: More complex debugging process
 4. **Timeouts**: Limited execution duration`,
-    image: {
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      alt: 'Serverless Architecture'
-    },
-    publishDate: '2025-05-12',
-    author: 'Raka Grarizki',
-    category: 'Cloud',
-    tags: ['serverless', 'cloud', 'architecture']
-  }
-]
+		image: {
+			src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+			alt: "Serverless Architecture",
+		},
+		publishDate: "2025-05-12",
+		author: "Raka Grarizki",
+		category: "Cloud",
+		tags: ["serverless", "cloud", "architecture"],
+	},
+];
 
 export const getPublishedPosts = () =>
-  blogPosts
-    .filter((p) => !p.draft && new Date(p.publishDate) < new Date())
-    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+	blogPosts
+		.filter((p) => !p.draft && new Date(p.publishDate) < new Date())
+		.sort(
+			(a, b) =>
+				new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime(),
+		);
 
 export const getPostBySlug = (slug: string) =>
-  blogPosts.find((p) => p.slug === slug && !p.draft)
+	blogPosts.find((p) => p.slug === slug && !p.draft);

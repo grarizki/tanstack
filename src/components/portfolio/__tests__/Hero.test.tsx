@@ -1,33 +1,31 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import Hero from '../Hero'
+import { describe, it, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+import Hero from "../Hero";
 
-describe('Hero', () => {
-  it('renders the main heading', () => {
-    render(<Hero />)
-    
-    expect(screen.getByText(/Building Modern Web Experiences/i)).toBeInTheDocument()
-  })
+describe("Hero", () => {
+	it("renders the main heading", () => {
+		render(<Hero />);
+		expect(screen.getByText(/Building Modern/i)).toBeInTheDocument();
+		expect(screen.getByText(/Web Experiences/i)).toBeInTheDocument();
+		expect(screen.getByText(/with Precision/i)).toBeInTheDocument();
+	});
+	it("renders the subheading", () => {
+		render(<Hero />);
 
-  it('renders the subheading', () => {
-    render(<Hero />)
-    
-    expect(screen.getByText(/Crafting digital masterpieces/i)).toBeInTheDocument()
-  })
+		expect(
+			screen.getByText(/Software Engineer based in Jakarta/i),
+		).toBeInTheDocument();
+		expect(screen.getByText(/8\+ languages/i)).toBeInTheDocument();
+	});
 
-  it('has correct structure', () => {
-    const { container } = render(<Hero />)
-    
-    const main = container.querySelector('main')
-    expect(main).toBeInTheDocument()
-    expect(main?.className).toContain('grid')
-    expect(main?.className).toContain('lg:grid-cols-1')
-  })
+	it("renders CTA buttons", () => {
+		render(<Hero />);
+		expect(screen.getByText("Get In Touch")).toBeInTheDocument();
+		expect(screen.getByText("View Work")).toBeInTheDocument();
+	});
 
-  it('heading has animate-on-scroll class', () => {
-    const { container } = render(<Hero />)
-    
-    const heading = container.querySelector('h1')
-    expect(heading?.className).toContain('animate-on-scroll')
-  })
-})
+	it("renders the availability badge", () => {
+		render(<Hero />);
+		expect(screen.getByText("Available for work")).toBeInTheDocument();
+	});
+});

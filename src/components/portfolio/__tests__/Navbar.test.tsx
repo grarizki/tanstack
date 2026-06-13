@@ -1,53 +1,41 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
-import { routeTree } from '../../../routeTree.gen'
-import Navbar from '../Navbar'
+import { describe, it, expect, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
 
-// Mock the theme hook
-const mockToggleTheme = vi.fn()
-const mockUseTheme = vi.fn(() => ({
-  theme: 'light',
-  toggleTheme: mockToggleTheme,
-}))
+// Mock TanStack Router Link to avoid SSR context requirements
+vi.mock("@tanstack/react-router", () => ({
+	Link: ({
+		to,
+		children,
+		className,
+	}: {
+		to: string;
+		children: React.ReactNode;
+		className?: string;
+	}) => (
+		<a href={to} className={className}>
+			{children}
+		</a>
+	),
+}));
 
-vi.mock('../../lib/theme.tsx', () => ({
-  useTheme: () => mockUseTheme(),
-  ThemeProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-}))
+import Navbar from "../Navbar";
 
-describe('Navbar', () => {
-  it('renders logo link', () => {
-    render(
-      <RouterProvider router={createRouter({ routeTree })}>
-        <Navbar />
-      </RouterProvider>
-    )
-    
-    expect(screen.getByText('Grarizki')).toBeInTheDocument()
-  })
+describe("Navbar", () => {
+	it("renders logo link", () => {
+		render(<Navbar />);
+		expect(screen.getByText("GRARIZKI")).toBeInTheDocument();
+	});
 
-  it('has theme toggle button', () => {
-    render(
-      <RouterProvider router={createRouter({ routeTree })}>
-        <Navbar />
-      </RouterProvider>
-    )
-    
-    const toggleButton = screen.getByLabelText('Toggle Dark Mode')
-    expect(toggleButton).toBeInTheDocument()
-  })
+	it("renders navigation links", () => {
+		render(<Navbar />);
+		expect(screen.getByText("Home")).toBeInTheDocument();
+		expect(screen.getByText("Work")).toBeInTheDocument();
+		expect(screen.getByText("About")).toBeInTheDocument();
+	});
 
-  it('calls toggleTheme when button is clicked', () => {
-    render(
-      <RouterProvider router={createRouter({ routeTree })}>
-        <Navbar />
-      </RouterProvider>
-    )
-    
-    const toggleButton = screen.getByLabelText('Toggle Dark Mode')
-    fireEvent.click(toggleButton)
-    
-    expect(mockToggleTheme).toHaveBeenCalled()
-  })
-})
+	it("renders contact button", () => {
+		render(<Navbar />);
+		const buttons = screen.getAllByText("Contact");
+		expect(buttons.length).toBeGreaterThanOrEqual(1);
+	});
+});

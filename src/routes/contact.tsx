@@ -1,159 +1,177 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
-import { MapPin, Mail, Phone } from 'lucide-react'
-import Container from '../components/portfolio/Container'
-import Sectionhead from '../components/portfolio/Sectionhead'
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { MapPin, Mail, Phone } from "lucide-react";
+import Container from "../components/portfolio/Container";
 
-export const Route = createFileRoute('/contact')({
-  component: ContactPage,
-})
+export const Route = createFileRoute("/contact")({
+	component: ContactPage,
+});
 
 function ContactPage() {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
+	const [formState, setFormState] = useState({
+		name: "",
+		email: "",
+		message: "",
+	});
+	const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Netlify will handle the form submission
-    setSubmitted(true)
-  }
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		// Netlify will handle the form submission
+		setSubmitted(true);
+	};
 
-  return (
-    <Container>
-      <Sectionhead>
-        <h1 className="text-4xl lg:text-5xl font-bold lg:tracking-tight text-stone-800 dark:text-amber-50">
-          Contact
-        </h1>
-        <p className="text-lg mt-4 text-stone-500 dark:text-amber-300">
-          We are here to help.
-        </p>
-      </Sectionhead>
+	return (
+		<div className="pt-16">
+			<Container className="py-20 md:py-28">
+				<div className="text-center mb-16">
+					<p className="font-mono text-xs text-emerald-500 tracking-widest uppercase mb-3">
+						/ contact
+					</p>
+					<h1 className="font-heading font-bold text-4xl md:text-5xl text-white">
+						Get In Touch
+					</h1>
+					<p className="font-body text-lg text-[#94A3B8] mt-4">
+						Have a project in mind? Let&apos;s talk about it.
+					</p>
+				</div>
 
-      <div className="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
-        <div>
-          <h2 className="font-medium text-2xl text-stone-700 dark:text-amber-100">
-            Contact Me!
-          </h2>
-          <p className="text-lg leading-relaxed text-stone-500 mt-3">
-            Have something to say? We are here to help. Fill up the form or send
-            email or call phone.
-          </p>
-          <div className="mt-5 space-y-3">
-            <div className="flex items-center space-x-2 text-stone-500 dark:text-amber-300">
-              <MapPin className="text-stone-400 w-4 h-4" />
-              <span>Jakarta, Indonesia</span>
-            </div>
-            <div className="flex items-center space-x-2 text-stone-500 dark:text-amber-300">
-              <Mail className="text-stone-400 w-4 h-4" />
-              <a href="mailto:raka.grarizki@gmail.com" className="hover:underline">
-                raka.grarizki@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center space-x-2 text-stone-500 dark:text-amber-300">
-              <Phone className="text-stone-400 w-4 h-4" />
-              <a href="tel:+6281224183361" className="hover:underline">
-                +62 812 2418 3361
-              </a>
-            </div>
-          </div>
-        </div>
+				<div className="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl">
+					{/* Contact info */}
+					<div className="animate-on-scroll relative bg-[#0F1115] border border-white/10 rounded-2xl p-8">
+						<span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-emerald-500/60" />
+						<span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-emerald-500/60" />
 
-        <div>
-          {submitted ? (
-            <div className="bg-green-100 dark:bg-green-900/20 border border-green-400 dark:border-green-600 text-green-700 dark:text-green-400 px-4 py-3 rounded">
-              Thank you for your message! I&apos;ll get back to you soon.
-            </div>
-          ) : (
-            <form
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-              onSubmit={handleSubmit}
-              className="space-y-4"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <div className="hidden">
-                <label>
-                  Don&apos;t fill this out if you&apos;re human:{' '}
-                  <input name="bot-field" />
-                </label>
-              </div>
+						<h2 className="font-heading font-semibold text-xl text-white mb-6">
+							Contact Info
+						</h2>
+						<div className="space-y-5">
+							<div className="flex items-center gap-3 text-[#94A3B8]">
+								<MapPin className="text-emerald-500 w-5 h-5 flex-shrink-0" />
+								<span className="font-body text-sm">Jakarta, Indonesia</span>
+							</div>
+							<div className="flex items-center gap-3 text-[#94A3B8]">
+								<Mail className="text-emerald-500 w-5 h-5 flex-shrink-0" />
+								<a
+									href="mailto:raka.grarizki@gmail.com"
+									className="font-body text-sm hover:text-emerald-400 transition-colors"
+								>
+									raka.grarizki@gmail.com
+								</a>
+							</div>
+							<div className="flex items-center gap-3 text-[#94A3B8]">
+								<Phone className="text-emerald-500 w-5 h-5 flex-shrink-0" />
+								<a
+									href="tel:+6281224183361"
+									className="font-body text-sm hover:text-emerald-400 transition-colors"
+								>
+									+62 812 2418 3361
+								</a>
+							</div>
+						</div>
+					</div>
 
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-stone-600 dark:text-amber-200"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formState.name}
-                  onChange={(e) =>
-                    setFormState({ ...formState, name: e.target.value })
-                  }
-                  className="mt-1 block w-full rounded-md border-stone-300 dark:border-gray-600 bg-amber-50/80 dark:bg-stone-800 text-stone-800 dark:text-amber-50 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 px-3 py-2 border"
-                />
-              </div>
+					{/* Form */}
+					<div className="animate-on-scroll">
+						{submitted ? (
+							<div className="relative bg-[#0F1115] border border-emerald-500/40 rounded-2xl p-8">
+								<span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-emerald-500/60" />
+								<span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-emerald-500/60" />
+								<p className="font-body text-emerald-400 text-lg">
+									Thank you for your message! I&apos;ll get back to you soon.
+								</p>
+							</div>
+						) : (
+							<form
+								name="contact"
+								method="POST"
+								data-netlify="true"
+								data-netlify-honeypot="bot-field"
+								onSubmit={handleSubmit}
+								className="space-y-5"
+							>
+								<input type="hidden" name="form-name" value="contact" />
+								<div className="hidden">
+									<label>
+										Don&apos;t fill this out if you&apos;re human:{" "}
+										<input name="bot-field" />
+									</label>
+								</div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-stone-600 dark:text-amber-200"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formState.email}
-                  onChange={(e) =>
-                    setFormState({ ...formState, email: e.target.value })
-                  }
-                  className="mt-1 block w-full rounded-md border-stone-300 dark:border-gray-600 bg-amber-50/80 dark:bg-stone-800 text-stone-800 dark:text-amber-50 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 px-3 py-2 border"
-                />
-              </div>
+								<div>
+									<label
+										htmlFor="name"
+										className="block font-mono text-xs text-[#94A3B8] tracking-widest uppercase mb-2"
+									>
+										Name
+									</label>
+									<input
+										type="text"
+										id="name"
+										name="name"
+										required
+										value={formState.name}
+										onChange={(e) =>
+											setFormState({ ...formState, name: e.target.value })
+										}
+										className="w-full rounded-xl bg-[#0F1115] border border-white/10 text-white px-4 py-3 font-body text-sm placeholder:text-[#64748B] focus:outline-none focus:border-emerald-500/60 focus:ring-1 focus:ring-emerald-500/30 transition-colors"
+										placeholder="Your name"
+									/>
+								</div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-stone-600 dark:text-amber-200"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  required
-                  value={formState.message}
-                  onChange={(e) =>
-                    setFormState({ ...formState, message: e.target.value })
-                  }
-                  className="mt-1 block w-full rounded-md border-stone-300 dark:border-gray-600 bg-amber-50/80 dark:bg-stone-800 text-stone-800 dark:text-amber-50 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 px-3 py-2 border"
-                />
-              </div>
+								<div>
+									<label
+										htmlFor="email"
+										className="block font-mono text-xs text-[#94A3B8] tracking-widest uppercase mb-2"
+									>
+										Email
+									</label>
+									<input
+										type="email"
+										id="email"
+										name="email"
+										required
+										value={formState.email}
+										onChange={(e) =>
+											setFormState({ ...formState, email: e.target.value })
+										}
+										className="w-full rounded-xl bg-[#0F1115] border border-white/10 text-white px-4 py-3 font-body text-sm placeholder:text-[#64748B] focus:outline-none focus:border-emerald-500/60 focus:ring-1 focus:ring-emerald-500/30 transition-colors"
+										placeholder="you@example.com"
+									/>
+								</div>
 
-              <button
-                type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors"
-              >
-                Send Message
-              </button>
-            </form>
-          )}
-        </div>
-      </div>
-    </Container>
-  )
+								<div>
+									<label
+										htmlFor="message"
+										className="block font-mono text-xs text-[#94A3B8] tracking-widest uppercase mb-2"
+									>
+										Message
+									</label>
+									<textarea
+										id="message"
+										name="message"
+										rows={4}
+										required
+										value={formState.message}
+										onChange={(e) =>
+											setFormState({ ...formState, message: e.target.value })
+										}
+										className="w-full rounded-xl bg-[#0F1115] border border-white/10 text-white px-4 py-3 font-body text-sm placeholder:text-[#64748B] focus:outline-none focus:border-emerald-500/60 focus:ring-1 focus:ring-emerald-500/30 transition-colors resize-none"
+										placeholder="Tell me about your project..."
+									/>
+								</div>
+
+								<button
+									type="submit"
+									className="w-full font-mono text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-6 py-3 rounded-full shadow-[0_0_20px_-5px_rgba(5,150,105,0.5)] hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.6)] hover:scale-105 active:scale-[0.98] transition-all duration-300"
+								>
+									Send Message
+								</button>
+							</form>
+						)}
+					</div>
+				</div>
+			</Container>
+		</div>
+	);
 }
