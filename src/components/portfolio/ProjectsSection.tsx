@@ -13,7 +13,7 @@ const projects = [
 		title: "Stoxlyz",
 		description:
 			"Built a data-intensive internal tool for monitoring business metrics, featuring real-time updates and complex data visualisations.",
-		tags: ["React", "Zustand", "Recharts"],
+		tags: ["Vue", "Zustand", "Recharts"],
 		href: "https://stoxlyz.com",
 		period: "2022",
 	},
